@@ -144,6 +144,9 @@
         }
     </style>
     <style>
+        body{
+            background-color: #000;
+        }
         *{
             box-sizing:border-box;
         }
@@ -155,11 +158,27 @@
         .img-box{
             width:100%;
             height:auto;
+            background-color: #000;
         }
         .img-box img{
             width:100%;
             background-color: #f0f0f0;
             
+        }
+        #show{
+            outline: none;
+            position:fixed;
+            top:10px;
+            left:10px;
+            z-index: 1;
+            background:none;
+            background-color: rgba(50,50,50,.6);
+            border:none;
+            border-radius:4px;
+            color:#fff;
+        }
+        .hide{
+            opacity: 0;
         }
     </style>
     <script src="plugin/jquery.min.js"></script>
@@ -168,7 +187,7 @@
 
 <body>
     <!-- <h2>作品展示</h2> -->
-    <button id="show">全屏</button>   
+    <button id="show">全屏展示</button>
     <div class="img-box">
         <img class="lazyload" src="images/logo.png" data-original="images/1.gif"/>
     </div>
@@ -203,8 +222,26 @@
             }
         }
         $("img").lazyload()
+        $("img").on("click",function(){
+            let $show = $("#show")
+            if($show.html() == "退出全屏" && $show.attr("class")){
+                $show.removeClass("hide")
+            }else if($show.html() == "退出全屏" && !$show.attr("class")){
+                $show.addClass("hide")
+            }
+        })
         $("#show").on("click",function(){
-            fullScreen()
+            let $show = $("#show")
+            if($show.html() == "全屏展示"){
+                $show.attr("class","hide")
+                $show.html("退出全屏")
+                fullScreen()
+            }else{
+                $show.removeClass("hide")
+                $show.html("全屏展示")
+                exitScreen()
+            }
+            
         })
     })
 </script>
