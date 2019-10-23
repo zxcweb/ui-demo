@@ -145,7 +145,7 @@
     </style>
     <style>
         body {
-            background-color: #000;
+            background-color: #f0f0f0;
         }
 
         * {
@@ -177,24 +177,33 @@
             .img-box {
                 width: 100%;
                 height: auto;
-                background-color: #000;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
             }
             .img-box img {
                 width: 100%;
+                margin-bottom:20px;
             }       
+            .img-box .lazyload.icon{
+                width:50%;
+            }
         }
         @media screen and (min-width: 769px) and (max-width: 1921px) { /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
             .img-box {
                 width: 100%;
                 height: auto;
-                background-color: #000;
                 display:flex;
                 flex-direction: column;
                 align-items: center;
             }
             .img-box img {
                 height:100vh;
-            }              
+                margin-bottom:20px;
+            }   
+            .img-box .lazyload.icon{
+                height:26vh;
+            }
         }
     </style>
     <script src="plugin/jquery.min.js"></script>
@@ -207,7 +216,7 @@
     <div class="img-box">
         <img class="lazyload" src="images/logo.png" data-original="images/1.gif" />
         <img class="lazyload" src="images/logo.png" data-original="images/2.gif" />
-        <img class="lazyload" src="images/logo.png" data-original="images/3.gif" />
+        <img class="lazyload icon" src="images/logo.png" data-original="images/3.gif" />
     </div>
 </body>
 <script>
